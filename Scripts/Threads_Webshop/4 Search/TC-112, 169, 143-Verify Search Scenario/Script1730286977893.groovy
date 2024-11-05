@@ -16,78 +16,80 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-import java.text.SimpleDateFormat
+import java.text.SimpleDateFormat as SimpleDateFormat
 
 // Get unique folder path based on the current timestamp
-String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())
-String screenshotFolder = "screenshots/search_" + timestamp + "/"
- 
+String timestamp = new SimpleDateFormat('yyyyMMdd_HHmmss').format(new Date())
+
+String screenshotFolder = ('screenshots/search_' + timestamp) + '/'
+
 WebUI.openBrowser('')
- 
+
 WebUI.maximizeWindow()
- 
+
 WebUI.navigateToUrl('https://threads0.myshopify.com/password')
- 
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Threads/div_Enter using password'))
- 
-WebUI.setEncryptedText(findTestObject('Object Repository/Search with Category_An/Page_Threads/input_Enter store using password_password'),
+
+WebUI.setEncryptedText(findTestObject('Object Repository/Search with Category_An/Page_Threads/input_Enter store using password_password'), 
     'gnzTAVlujIw+lTr0To6+Cg==')
- 
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Threads/button_Enter'))
- 
+
 //Verify Home Page
 WebUI.verifyTextPresent('Home', false)
- 
-WebUI.takeScreenshot(screenshotFolder + "home.png")
+
+WebUI.takeScreenshot(screenshotFolder + 'home.png')
 
 //verify catalog page
 WebUI.verifyTextPresent('Catalog', false)
 
-WebUI.takeScreenshot(screenshotFolder + "catalog.png")
- 
+WebUI.takeScreenshot(screenshotFolder + 'catalog.png')
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Threads/span_Catalog'))
- 
+
 //verify Products page
 WebUI.verifyTextPresent('Products', false)
- 
-WebUI.takeScreenshot(screenshotFolder + "product.png")
+
+WebUI.takeScreenshot(screenshotFolder + 'product.png')
 
 //Filter using Price
 WebUI.verifyTextPresent('Price', false)
- 
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/span_Price'))
- 
-WebUI.delay(2)
- 
+
+WebUI.delay(3)
+
 //Enter price range
-WebUI.setText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/input__filter.v.price.gte'), '199')
- 
-WebUI.setText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/input__filter.v.price.lte'), '299')
- 
+WebUI.setText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/input__filter.v.price.gte'), 
+    '199')
+
+WebUI.setText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/input__filter.v.price.lte'), 
+    '299')
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/summary_Price'))
- 
+
 WebUI.verifyTextPresent('Sort by:', false)
 
-WebUI.takeScreenshot(screenshotFolder + "items.png")
- 
+WebUI.takeScreenshot(screenshotFolder + 'items.png')
+
 /*WebUI.selectOptionByValue(findTestObject('Object Repository/Search with Category_An/s2/Page_Products  Threads/select_Featured                            _7b0490'),
     'price-ascending', true)*/
- 
 String product1 = WebUI.getText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/a_ASICS TIGER  GEL-LYTE V 30 YEARS OF GEL PACK'))
- 
+
 println(product1)
- 
+
 String price1 = WebUI.getText(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/a_ASICS TIGER  GEL-LYTE V 30 YEARS OF GEL PACK_1'))
- 
+
 println(price1)
- 
+
 WebUI.click(findTestObject('Object Repository/Search with Category_An/Page_Products  Threads/a_ASICS TIGER  GEL-LYTE V 30 YEARS OF GEL PACK_1_2'))
- 
+
 WebUI.delay(2)
- 
+
 WebUI.verifyTextPresent(product1, false)
- 
+
 WebUI.verifyTextPresent(price1, false)
- 
+
 WebUI.closeBrowser()
- 
+
