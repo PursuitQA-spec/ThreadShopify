@@ -118,6 +118,8 @@ WebUI.click(findTestObject('Object Repository/Page_Checkout - Threads/button_Pay
 
 WebUI.takeScreenshot(screenshotFolderPath + 'attempt_payment_valid_case.png')
 
+WebUI.delay(4)
+
 // Step 11: Verify order confirmation
 WebUI.verifyTextPresent('Your order is confirmed', false)
 
